@@ -2,11 +2,14 @@
 public class Word {
 	private int position;
 	private char character;
+	
 
 	
 	public Word(int pos, char chara) {
 		position = pos;
 		character = chara;
+		
+
 
 	}
 
@@ -14,4 +17,5 @@ public class Word {
 	public void setLocation(int l) { position = l; }
     public char getCharacter() {return character;}
     public void setCharacter(char chara) {character = chara;}
+	
 }
