@@ -4,12 +4,31 @@ public class wordle{
         String[] fourletters = {"tube", "live", "give", "soda", "code", "note", "love", "card", "fart", "lamp"};
         String [] fiveletters = {"water", "cubit", "whale", "cards", "mouse", "sheet", "sheep", "smell","steal","sneak"};
 
+
+        /* CHANGES TO BE MADE:
+        * - CREATE A BIG ARRAY OF STRINGS ANY SIZE, USER MAKES CHOICE, CHOICE REGISTERS SIZE OF EVERY STRING. ITERATE THROUGH BIG ARRAY AND STORE
+        * INTO SMALL ARRAY ALL THE CHOICE-SIZED STRINGS.
+        * - DIFFICULTY: DIFFICULTY CAN BE GIVEN IN THE "SELECTION MENU", JUST CHANGE THE WORDING E.G. "HARD MODE: 5-6 WORDS".
+        * KEEP AN OUT OF BOUNDS CASE.
+        * - DOUBLE LETTERS: MODIFY WORD.JAVA AND ADD 1 MORE VARIABLE [REQUIRES A LOT OF FIXING]:
+        *    + What if dodo has 2 d's and the word is word and it has 1 d. How to fix *question mark*. Potential solution. If 1 of them is in the slot, mark the other as wrong
+        *      or smth.
+        *
+        */
+
+
+
+
         StdOut.print("How long do you want the word to be?");
         StdOut.println();
         for (int i = 0; i< 3; i++) {
             
             StdOut.println("I want it to be " + (i+3) + " words long");
         }
+
+
+
+
         StdOut.print("Enter a number => ");
         int choice = Integer.parseInt(StdIn.readLine());
 
