@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:elevatorgames/shared/globals.dart' as globals;
 
 class User extends StatefulWidget {
-  const User({ Key? key, required this.userName }) : super(key: key);
-  final String userName;
   
   @override
   State<User> createState() => _UserState();
@@ -13,7 +12,7 @@ class _UserState extends State<User> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome ${widget.userName}'),
+        title: Text('Welcome ${globals.userName}'),
         backgroundColor: Colors.grey,
       ),
       body: Column(children: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:elevatorgames/pages/home.dart';
+import 'package:elevatorgames/shared/globals.dart' as globals;
 
 
 class Start extends StatelessWidget {
@@ -29,9 +30,8 @@ class Start extends StatelessWidget {
         SizedBox(height: 20),
         ElevatedButton(
           onPressed: (){
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => Home(userName : userName),
-              ));
+            globals.userName = userName;
+            Navigator.pushReplacementNamed(context, '/');
           },
           child: Text('Elevator Games')
         )

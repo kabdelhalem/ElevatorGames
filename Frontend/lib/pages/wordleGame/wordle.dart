@@ -65,6 +65,7 @@ class _WordleState extends State<Wordle> {
                   onPressed: (){
                     print(myList);
                     calculateWordle(myList);
+                    
                   },
                   child: Text(
                     'Enter',
