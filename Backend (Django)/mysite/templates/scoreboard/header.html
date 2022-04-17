@@ -1,0 +1,164 @@
+{% if user.is_authenticated %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <title>Blackstone Admin Dashboard</title>
+        <meta charset="utf-8" />
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'personal/css/bootstrap.min.css' %}" type = "text/css"/>
+        <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="{% static 'personal/js/jquery-3.4.0.min.js' %}"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="{% static 'personal/js/popper.min.js' %}"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="{% static 'personal/js/bootstrap.min.js' %}"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="{% static 'personal/js/mdb.min.js' %}"></script>
+
+        <style type="text/css">
+            html,
+            body {
+              height:100%
+            }
+        </style>
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+    </head>
+
+    <body>
+
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="#">Blackstone Admin Dashboard</a>
+
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <script>
+        var GET = {};
+        var query = window.location.search.substring(1).split("&");
+        for (var i = 0, max = query.length; i < max; i++)
+          {
+          if (query[i] === "") // check for trailing & with no param
+              continue;
+
+          var param = query[i].split("=");
+          GET[decodeURIComponent(param[0])] = decodeURIComponent(param[1] || "");
+        }
+        window.user = GET.user;
+
+    </script>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item" id="PersonalLink">
+                  <a class="nav-link" href="/personal/" onclick="this.href = this.href + '?user=' + window.user">Home
+                      <span class="sr-only">(current)</span>
+                  </a>
+              </li>
+              <li class="nav-item" id="TaskManagerLink">
+                  <a class="nav-link" href="/taskmanager/" onclick="this.href = this.href + '?user=' + window.user">Task Manager</a>
+              </li>
+              <li class="nav-item" id="FileManagerLink">
+                  <a class="nav-link" href="/filemanager/" onclick="this.href = this.href + '?user=' + window.user">File Manager</a>
+              </li>
+          </ul>
+          <!-- Links -->
+
+
+
+          <form class="form-inline">
+              <div class="form-group row" style="margin-left: 5px; margin-right: 5px;">
+                  <select id="selectUser" name="user" required="required" class="custom-select custom-select-sm" onchange="console.log('User selection changed. Reloading...');this.form.submit();" style="font-size: 120%; padding-top: 0px;">
+                    {% for user in user_list %}
+                      <option value="{{ user.name }}">{{ user.name }}</option>
+                    {% endfor %}
+                  </select>
+                  <script>
+                      if (window.user) {
+                          document.getElementById('selectUser').value = window.user;
+                      }
+                  </script>
+              </div>
+
+          </form>
+          <script>
+              var GET = {};
+              var query = window.location.search.substring(1).split("&");
+              for (var i = 0, max = query.length; i < max; i++)
+                {
+                if (query[i] === "") // check for trailing & with no param
+                    continue;
+
+                var param = query[i].split("=");
+                GET[decodeURIComponent(param[0])] = decodeURIComponent(param[1] || "");
+              }
+              if (!GET.user) {
+                  document.getElementById('selectUser').form.submit()
+              }
+          </script>
+              <ul class="navbar-nav mr-0">
+                  <li class="nav-item" id="LogOutLink">
+                      <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                  </li>
+              </ul>
+    </div>
+      <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
+
+    <div id="MainContentBlock">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <style>
+        #MainContentBlock{ text-align: center; }
+    </style>
+
+    <script>
+        loc = window.location.pathname
+        switch(loc.substring(0, loc.lastIndexOf('/'))) {
+        case "/personal":
+            document.getElementById("PersonalLink").className = "nav-item active";
+            break;
+        case "":
+            document.getElementById("TaskManagerLink").className = "nav-item active";
+            break;
+        case "/taskmanager":
+            document.getElementById("TaskManagerLink").className = "nav-item active";
+            break;
+        case "/filemanager":
+            document.getElementById("FileManagerLink").className = "nav-item dropdown active";
+        default:
+            console.log("NavBar does not recognize this directory")
+        }
+    </script>
+
+    </body>
+    </html>
+
+{% else %}
+  <meta http-equiv="refresh" content="0; url={% url 'login' %}" />
+{% endif %}
+

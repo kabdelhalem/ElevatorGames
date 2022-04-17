@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Login</title>
+	<meta charset="utf-8" />
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'personal/css/bootstrap.min.css' %}" type = "text/css"/>
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="{% static 'personal/js/jquery-3.4.0.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'personal/js/popper.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'personal/js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'personal/js/mdb.min.js' %}"></script>
+
+	<style type="text/css">
+		html,
+		body {
+		  height:100%
+		}
+	</style>
+</head>
+
+<body>
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="#">Blackstone Admin Dashboard</a>
+
+</nav>
+<!--/.Navbar-->
+
+<div id="MainContentBlock">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<style>
+    #MainContentBlock{ text-align: center; }
+</style>
+
+<script>
+    loc = window.location.pathname
+    switch(loc.substring(0, loc.lastIndexOf('/'))) {
+        case "/personal":
+        document.getElementById("PersonalLink").className = "nav-item active";
+        break;
+    case "/taskmanager":
+        document.getElementById("TaskManagerLink").className = "nav-item active";
+        break;
+        default:
+        console.log("NavBar does not recognize this directory")
+    }
+</script>
+
+</body>
+
+</html>
