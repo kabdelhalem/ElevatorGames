@@ -10,5 +10,6 @@ const textInputDecoration = InputDecoration(
   focusedBorder: OutlineInputBorder(
     borderSide: BorderSide(color: Colors.yellow)
   ),
-  contentPadding: EdgeInsets.all(10)
+  contentPadding: EdgeInsets.all(10),
+  counterText: '',
 );

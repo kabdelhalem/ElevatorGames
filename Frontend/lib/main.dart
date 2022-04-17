@@ -7,7 +7,7 @@ import 'package:elevatorgames/pages/start.dart';
 
 void main() {
   runApp(MaterialApp(
-    initialRoute: '/start',
+    initialRoute: '/wordlemain',
     routes: {
       '/':(context) => Home(),
       '/user':(context) => User(),
