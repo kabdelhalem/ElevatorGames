@@ -39,3 +39,17 @@ def upload_score(request, game):
         # response = HttpResponse(file)
         # response['Content-Disposition'] = 'attachment; filename=' + file_name
         # return response
+
+def get_leaderboard(request, game):
+    if request.method == 'GET':
+        if game == "wordle":
+            leaderboard = [[]]
+            print(WordleScore.objects.all().order_by('-score'))
+            for item in WordleScore.objects.all().order_by('-score'):
+                print(leaderboard.__len__())
+                leaderboard[0].append({"name": item.player_name, "base64": item.player_pic, "score": item.score})
+                # leaderboard.append({item.player_name, item.player_pic, item.score, item.pub_date})
+
+            print(leaderboard)
+            return HttpResponse(leaderboard)
+
