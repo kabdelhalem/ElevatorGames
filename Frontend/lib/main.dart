@@ -10,7 +10,7 @@ void main() {
     initialRoute: '/start',
     routes: {
       //'/':(context) => Home(),
-      '/user':(context) => User(),
+      //'/user':(context) => User(),
       // '/wordle':(context) => Wordle(),
       '/wordlemain':(context) => WordleMain(),
       '/start':(context) => Start(),

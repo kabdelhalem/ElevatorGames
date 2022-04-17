@@ -1,7 +1,11 @@
+import 'package:elevatorgames/pages/user.dart';
 import 'package:flutter/material.dart';
+import 'package:elevatorgames/pages/start.dart';
 
 class Home extends StatefulWidget {
-  const Home({ Key? key }) : super(key: key);
+  const Home({ Key? key,  required this.userName}) : super(key: key);
+  
+  final String userName;
 
   @override
   State<Home> createState() => _HomeState();
@@ -19,7 +23,9 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.person),
             label: Text(''),
             onPressed: (){
-              Navigator.pushNamed(context, '/user');
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => User(userName : widget.userName),
+              ));
             },
           )
         ],

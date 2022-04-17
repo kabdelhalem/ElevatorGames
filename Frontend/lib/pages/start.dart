@@ -29,9 +29,9 @@ class Start extends StatelessWidget {
         SizedBox(height: 20),
         ElevatedButton(
           onPressed: (){
-            // Navigator.of(context).push(MaterialPageRoute(
-            //     builder: (context) => Home(userName : userName),
-            //   ));
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => Home(userName : userName),
+              ));
           },
           child: Text('Elevator Games')
         )
