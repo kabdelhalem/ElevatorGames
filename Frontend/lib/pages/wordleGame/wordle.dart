@@ -53,20 +53,19 @@ class _WordleState extends State<Wordle> {
                         }),
                   ),
                 ),
-                TextButton(
+              ],
+            ),
+          ),
+          ElevatedButton(
                   onPressed: (){
                     print(myList);
                   },
                   child: Text(
                     'Enter',
                     style: TextStyle(
-                      backgroundColor: Colors.amber
                     ),
                   )
                 )
-              ],
-            ),
-          )
         ],
       ),
       
