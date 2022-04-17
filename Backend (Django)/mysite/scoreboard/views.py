@@ -17,16 +17,18 @@ def index(request):
 def upload_score(request, game):
     if request.method == 'GET':
         if game == "wordle":
-            player_score = int(request.GET["score"])
-            # ELEVATOR ANTI CHEAT (PATENT PENDING) (COPYLEFT EBIG GAMES)
-            if player_score > 0 and player_score < 200:
-                new_score = WordleScore()
-                new_score.player_name = request.GET["name"]
-                new_score.score = int(request.GET["score"])
-                new_score.pub_date = datetime.datetime.now()
-                new_score.save()
+                player_score = int(request.GET["score"])
 
-                return HttpResponse("SUCCESS")
+                # ELEVATOR ANTI CHEAT (PATENT PENDING) (COPYLEFT EBIG GAMES)
+                if player_score > 0 and player_score <= 100:
+                    new_score = WordleScore()
+                    new_score.player_name = request.GET["name"]
+                    new_score.player_pic = int(request.GET["base64"])
+                    new_score.score = int(request.GET["score"])
+                    new_score.pub_date = datetime.datetime.now()
+                    new_score.save()
+
+                    return HttpResponse("SUCCESS")
 
 
         # task = Task.objects.get(id=task_id)
