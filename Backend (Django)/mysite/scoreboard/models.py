@@ -23,8 +23,8 @@ class Score(models.Model):
 class WordleScore(models.Model):
     # question = models.ForeignKey(Question, on_delete=models.CASCADE)
     player_name = models.CharField(max_length=200)
+    player_pic = models.CharField(max_length=2732, default="0")  # Base64 profile pic
     pub_date = models.DateTimeField('date published', default=datetime.datetime(1970,1,1,1,1,1))
-    # pub_date_1 = models.DateTimeField('time published', default=datetime.datetime(1970,1,1,1,1,1))
     score = models.IntegerField(default=0)
 
     def was_published_recently(self):
