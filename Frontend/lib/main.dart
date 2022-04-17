@@ -9,9 +9,9 @@ void main() {
   runApp(MaterialApp(
     initialRoute: '/start',
     routes: {
-      //'/':(context) => Home(),
-      //'/user':(context) => User(),
-      // '/wordle':(context) => Wordle(),
+      '/':(context) => Home(),
+      '/user':(context) => User(),
+       //'/wordle':(context) => Wordle(),
       '/wordlemain':(context) => WordleMain(),
       '/start':(context) => Start(),
       
