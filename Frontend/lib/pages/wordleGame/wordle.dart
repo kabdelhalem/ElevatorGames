@@ -1,6 +1,7 @@
 import 'package:elevatorgames/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:elevatorgames/services/chooseDifficulty.dart';
 
 class Wordle extends StatefulWidget {
   
@@ -13,6 +14,8 @@ class Wordle extends StatefulWidget {
 
 class _WordleState extends State<Wordle> {
 
+  List<String> myList = [];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,93 +25,37 @@ class _WordleState extends State<Wordle> {
       body: Column(
         children: [
           Text("Wordle"),
-          Text('Dropdown Value: ${widget.newDropDownValue}'),
+          Text('Dropdown Value: ${chooseDifficulty(widget.newDropDownValue)}'),
           Padding(
             padding: const EdgeInsets.fromLTRB(250, 10, 250, 0),
             child: Row(
               children: [
-                new Flexible(
-                  child: TextFormField(
-                    decoration: textInputDecoration,
-                    maxLength: 1,
-                    maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                    validator: (val){
-                      return val!.length < 1 ? '' : null;
-                    },
-                    onChanged: (val){
-                      setState(() {
-                        //print(val);
-                      });
-                    }
-                  ),
-                ),
-                SizedBox(width:5, height: 5,),
-                new Flexible(
-                  child: TextFormField(
-                    decoration: textInputDecoration,
-                    maxLength: 1,
-                    maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                    validator: (val){
-                      return val!.length < 1 ? '' : null;
-                    },
-                    onChanged: (val){
-                      setState(() {
-                        //print(val);
-                      });
-                    }
-                  ),
-                ),
-                SizedBox(width:5, height: 5,),
-                new Flexible(
-                  child: TextFormField(
-                    decoration: textInputDecoration,
-                    maxLength: 1,
-                    maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                    validator: (val){
-                      return val!.length < 1 ? '' : null;
-                    },
-                    onChanged: (val){
-                      setState(() {
-                        //print(val);
-                      });
-                    }
-                  ),
-                ),
-                SizedBox(width:5, height: 5,),
-                new Flexible(
-                  child: TextFormField(
-                    decoration: textInputDecoration,
-                    maxLength: 1,
-                    maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                    validator: (val){
-                      return val!.length < 1 ? '' : null;
-                    },
-                    onChanged: (val){
-                      setState(() {
-                        //print(val);
-                      });
-                    }
-                  ),
-                ),
-                SizedBox(width:5, height: 5,),
-                new Flexible(
-                  child: TextFormField(
-                    decoration: textInputDecoration,
-                    maxLength: 1,
-                    maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                    validator: (val){
-                      return val!.length < 1 ? '' : null;
-                    },
-                    onChanged: (val){
-                      setState(() {
-                        //print(val);
-                      });
-                    }
+                Expanded(
+                  child: Row(
+                    children: List<Widget>.generate(chooseDifficulty(widget.newDropDownValue), (index){
+                          return Container(
+                            child: new Flexible(
+                              child: TextFormField(
+                                decoration: textInputDecoration,
+                                maxLength: 1,
+                                maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                                validator: (val){
+                                  return val!.length < 1 ? '' : null;
+                                },
+                                onChanged: (val){
+                                  setState(() {
+                                    myList.add(val);
+                                  });
+                                }
+                              ),
+                            ),
+                          );
+                        }),
                   ),
                 ),
                 TextButton(
                   onPressed: (){
-                    
+                    print(myList);
                   },
                   child: Text(
                     'Enter',

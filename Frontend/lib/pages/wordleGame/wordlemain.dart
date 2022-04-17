@@ -1,6 +1,7 @@
 import 'package:elevatorgames/pages/wordleGame/wordle.dart';
 import 'package:flutter/material.dart';
 import 'package:elevatorgames/pages/wordleGame/wordlemain.dart';
+import 'package:elevatorgames/services/chooseDifficulty.dart';
 
 class WordleMain extends StatefulWidget {
   const WordleMain({ Key? key }) : super(key: key);
@@ -61,6 +62,7 @@ class _WordleMainState extends State<WordleMain> {
             SizedBox(height: 15,),
             
             ElevatedButton(onPressed: (){
+              print(chooseDifficulty(dropdownValue));
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => Wordle(newDropDownValue : dropdownValue),
               ));
