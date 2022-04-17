@@ -1,0 +1,4 @@
+calculateWordle(tryWord){
+  
+  
+}

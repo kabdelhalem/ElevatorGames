@@ -64,7 +64,7 @@ class _WordleState extends State<Wordle> {
           ElevatedButton(
                   onPressed: (){
                     print(myList);
-                    //calculateWordle(myList);
+                    calculateWordle(myList);
                   },
                   child: Text(
                     'Enter',
